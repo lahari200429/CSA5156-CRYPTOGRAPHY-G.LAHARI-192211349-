@@ -1,7 +1,5 @@
 #include <stdio.h>
 #include <ctype.h>
-
-// Function to calculate the modular multiplicative inverse of a modulo m
 int modInverse(int a, int m) {
     a = a % m;
     for (int x = 1; x < m; x++) {
@@ -12,7 +10,6 @@ int modInverse(int a, int m) {
     return 1;
 }
 
-// Function to decrypt affine cipher given ciphertext, and assumed values of a and b
 void decryptAffine(char *ciphertext, int a, int b) {
     int a_inv = modInverse(a, 26);
     for (int i = 0; ciphertext[i] != '\0'; i++) {
@@ -30,12 +27,8 @@ void decryptAffine(char *ciphertext, int a, int b) {
 int main() {
     char ciphertext[] = "YOUR CIPHERTEXT HERE";
     int a, b;
-
-    // Based on 'B' -> 'E' and 'U' -> 'T' mappings, deduced values for a and b
-    // Assuming 'B' is the most frequent and 'U' is the second most frequent in the ciphertext
-    // Frequency analysis and assumptions lead to these values
-    a = 7; // Assumed value based on 'B' -> 'E'
-    b = 19; // Assumed value based on 'U' -> 'T'
+    a = 7;
+    b = 19; 
 
     decryptAffine(ciphertext, a, b);
     return 0;
